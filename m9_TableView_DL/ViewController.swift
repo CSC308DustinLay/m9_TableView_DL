@@ -9,11 +9,13 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource
 {
+    let fruits = ["apple", "banana", "orange", "cherry", "strawberry"]
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("#1", #function)
         
         //displays 100 cells
-        return 100
+        return fruits.count
     }
     
     //this method is called repeatedly until something
@@ -22,10 +24,7 @@ class ViewController: UIViewController, UITableViewDataSource
         //#1 get or reuse a cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         //#2 put data into cell
-        if indexPath.row < 19
-        {
-            cell.textLabel?.text = "\(indexPath.section) - \(indexPath.row)"
-        }
+        cell.textLabel?.text = fruits[indexPath.row]
         //#3 return cell
         return cell
     }
